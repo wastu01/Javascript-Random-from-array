@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="data.txt"></script>
+
+</head>
+<body>
+    <div class="container">
+      <div class="card">
+        
+        <h2><a href="https://wastu01.github.io/Javascript-Randomman-from-array/" target="_blank">隨機抽籤系統</a></h2>
+        <h3>請輸入抽籤名冊(格式：『姓名+","』)</h3>
+        
+        <div class="demo">
+          <div class="InputUI">
+            <br>
+            <textarea id="data" class="area" type="text" placeholder="輸入抽獎名冊" rows="5" cols="35"></textarea>
+            <br>
+            <button onclick="inputData();" class="btn" id="import">匯入資料</button>
+            <button onclick="clearData();" class="btn" id="import">清除資料</button>
+            <button onclick="randomData();" class="btn" id="start">開始抽籤</button>
+            <hr>
+            <input class="input" name="inputone" id="inputone" type="text" placeholder="輸入一個名單"  />
+            <button class="btn block">開發中</button>
+
+          </div>
+      
+          <div class="OutputUI">
+
+          <h2 id="resulttxt">h2222222</h2>
+          <textarea id="render" class="area" type="text" placeholder="result" rows="10" cols="25">中獎</textarea>
+
+
+          </div>
+
+        </div>
+    
+      
+      </div>
+    </div>
+
+<script>
+var data = document.getElementById("data");
+
+// var newdata = "data1,data2";
+
+var result = document.getElementById("resulttxt");
+
+var render = document.getElementById("render")
+
+
+
+var number = 1;
+
+function inputData(){
+
+data.value = newdata;
+
+}
+
+function randomData(){
+
+result.innerText = '抽籤結果(共'+ number+'位)';
+
+let array = data.value.split(",");
+
+RandArray(array);
+
+// let x = Math.floor(Math.random() * array.length) ;
+// let y = x + 1;
+// document.getElementById("demo2").innerHTML = "取亂數值：" + y;
+// document.getElementById("demo3").innerHTML = "抽到資料：" + data[x];
+
+}
+
+function RandArray(array){
+    
+    let choose = getRandom(array.length);
+    let rValue = array[choose];
+    render.innerText = rValue;
+
+}
+
+function getRandom(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+function clearData() {
+
+  data.value = "";
+
+}
+
+
+
+</script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,131 @@
+body {
+    font-family: 
+     system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,
+     Helvetica,Arial,
+     sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+    font-weight:bold;
+    background: #fefae0;
+ /*  挑個顏色吧 https://coolors.co/palettes/trending */
+ }
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+* {
+  font-family: "Noto Sans TC";
+}
+.container{
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+
+.card{
+  margin:0 auto;
+  border-style: groove;
+  border-radius: 30px;
+  margin: 10px 10px 10px 10px;
+  background-color: lightblue;
+  cursor: grab;
+  transition: 0.5s;
+  color: #ff6347;
+  padding: 30px 35px 50px 35px;
+}
+.card:hover {
+  box-shadow: 5px 4px 10px rgba(51, 51, 102, 0.5);
+  transform: translateY(-10px);
+  color:#D12E28;
+}
+  /* .card:active {
+  background-color: #151E3F;
+  box-shadow: 20px 22px 5px #9BC3D3;
+  
+  } */
+#showcolor {
+  font-size: 25px;
+
+}
+
+#showtext {
+  font-size: 50px;
+  color: #F7FFF7;
+  pointer-events: auto !important;
+}
+.demo{
+
+    padding-top: 10px;
+    text-align: left;
+}
+
+.InputUI{
+  float:left;
+  width: 45%;
+  margin-left: 0.2em;
+}
+.OutputUI{
+  float: right;
+  width: 40%;
+  margin-right: 0.1em;
+}
+.input{
+  width: 45%;
+
+}
+.area{
+        width: 100%;
+        padding: 5px;
+        border:2px black solid;
+        -webkit-border-radius: 5px;
+        border-radius: 5px; 
+        height: 10em;
+        cursor:pointer;
+}
+.btn {
+
+margin:5px;
+padding: 0.2em;
+outline: none;
+color:#fff;
+background-color: #27ae60;
+border: none;
+border-radius:5px;
+box-shadow: 0 2px #95a5a6;
+}
+
+.btn:hover{
+background-color: #2ecc71;
+}
+
+.btn:active {
+background-color: #2ecc71;
+box-shadow: 0 5px #95a5a6;
+transform: translateY(4px);
+}
+
+.block{
+
+}
+
+a:link{
+  color:#ff7a33;
+}
+a:visited{
+  color:#5f7795;
+}
+
+a:hover{
+  color:green;
+}
+
+a:active{
+  color:#fd6d41;
+}
+
+input[type="text"]
+{
+margin-top: 5px;
+padding:5px; border:2px black solid;
+cursor:pointer;
+-webkit-border-radius: 5px;
+border-radius: 5px; 
+}
