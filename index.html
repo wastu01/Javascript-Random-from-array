@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="refresh" content="30">
 <link rel="stylesheet" href="style.css">
 <script src="data.txt"></script>
+<script src="https://blocklypro.webduino.io/node_modules/jquery/dist/jquery.min.js?rev=2f6b11a7e914718e0290410e85366fe9"></script>
+<script src="https://blocklypro.webduino.io/dist/lib/webduino-all-0.4.20.min.js?rev=4426739c00d85325cb2d3d701fa50666"></script>
+<script src="https://blocklypro.webduino.io/dist/webduino-blockly.min.js?rev=6e074ceb23d12d1f7cf2ec95cd5a4150"></script>
+<script src="https://blocklypro.webduino.io/dist/lib/firebase.min.js?rev=c0bfd493efd477d098a4ae9e92b13880"></script>
+<script src="https://blocklypro.webduino.io/dist/lib/runtime.min.js?rev=683a69503433786202911b4d9f766100"></script>
 
 </head>
 <body>
@@ -15,7 +22,7 @@
         <div class="demo">
           <div class="InputUI">
             <br>
-            <textarea id="data" class="area" type="text" placeholder="輸入抽獎名冊" rows="5" cols="35"></textarea>
+            <textarea id="data" class="area" type="text" placeholder="輸入抽獎名冊" rows="5" cols="35">TSM,MSFT</textarea>
             <br>
             <button onclick="inputData();" class="btn" id="import">匯入資料</button>
             <button onclick="clearData();" class="btn" id="import">清除資料</button>
@@ -79,6 +86,8 @@ function RandArray(array){
     let choose = getRandom(array.length);
     let rValue = array[choose];
     render.innerText = rValue;
+    speakSynth.cancel();
+    speak('中獎者為'+rValue,['zh-TW', 1, 1, 1]);
 
 }
 
@@ -89,6 +98,50 @@ function clearData() {
 
   data.value = "";
 
+}
+
+
+var rgbled;
+var button;
+var result;
+
+function math_random_int(a, b) {
+  if (a > b) {
+    // Swap a and b to ensure a is smaller.
+    var c = a;
+    a = b;
+    b = c;
+  }
+  return Math.floor(Math.random() * (b - a + 1) + a);
+}
+
+boardReady({board: 'Smart', device: '10dMjWX4', transport: 'mqtt'}, function (board) {
+  board.samplingInterval = 50;
+  rgbled = getRGBLedCathode(board, 15, 12, 13);
+  button = getPullupButton(board, 4);
+  
+  button.on('pressed', function () {
+    randomData();
+    rgbled.setColor('#e7ff33');
+  });
+  button.on('released', function () {
+
+  rgbled.setColor('#990000');
+  });
+});
+
+function start(){
+	var button;
+	var WebduinoID = document.getElementById("WebduinoID").value;
+
+	boardReady({board: 'Smart', device: WebduinoID, transport: 'mqtt'}, function (board) {
+	 board.systemReset();
+	 board.samplingInterval = 50;
+	 button = getPullupButton(board, 4);
+	 button.on("pressed", function(){
+    randomData();
+  });
+  })
 }
 
 
