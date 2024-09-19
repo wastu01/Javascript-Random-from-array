@@ -1,1 +1,1 @@
-let newdata ="TSLA,AAPL,NVDA,AMZN";
+let newdata ="大中天,小中天,中中天,小小天";
